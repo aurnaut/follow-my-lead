@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../redux/actions';
+import countryList from 'react-select-country-list';
 
 class NewEntryForm extends Component {
   state = {
     sentence: '',
-    author: ''
+    author: '',
+    country: '',
+    options: countryList().getData()
   };
 
   inputChange = e => {
@@ -14,16 +17,17 @@ class NewEntryForm extends Component {
   };
 
   formSubmit = e => {
-    const { sentence, author } = this.state;
+    const { sentence, author, country } = this.state;
     const { addEntry } = this.props;
     e.preventDefault();
-    addEntry({ sentence, author });
+    addEntry({ sentence, author, country });
     //this.setState({ entry: {} });
   };
 
   renderForm = () => {
-    const { sentence, author } = this.state;
+    const { sentence, author, country, options } = this.state;
     console.log(this.state);
+    console.log(options);
     return (
       <div>
         <form onSubmit={this.formSubmit}>
@@ -35,6 +39,7 @@ class NewEntryForm extends Component {
               type="text"
               name="sentence"
             />
+            <br />
             <label htmlFor="author">Author</label>
             <input
               value={author}
@@ -42,6 +47,22 @@ class NewEntryForm extends Component {
               type="text"
               name="author"
             />
+            <br />
+            <select
+              name="country"
+              value={country}
+              onChange={this.inputChange}
+              className="form-control"
+            >
+              {options.map(option => {
+                return (
+                  <option key={option.value} value={option.label}>
+                    {option.label}
+                  </option>
+                );
+              })}
+            </select>
+            <br />
             <button type="submit">Save</button>
           </div>
         </form>

@@ -8308,6 +8308,11 @@ react-scripts@2.1.8:
   optionalDependencies:
     fsevents "1.2.4"
 
+react-select-country-list@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/react-select-country-list/-/react-select-country-list-1.0.7.tgz#5bc9b6cbb8f9b7dd7e799927d80d76672324c844"
+  integrity sha512-UvweMItWPvKXVVOLuA8j5W63mCchS5iI8IwA8P7RWty3/4N3BTxx5V3HfAsaUEFNw4cFKXf5WoEKXzMtmh1uLg==
+
 react@^16.8.6:
   version "16.8.6"
   resolved "https://registry.yarnpkg.com/react/-/react-16.8.6.tgz#ad6c3a9614fd3a4e9ef51117f54d888da01f2bbe"

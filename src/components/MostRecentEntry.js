@@ -18,7 +18,11 @@ class TestComp extends Component {
             <div className="current-sentence">
               Sentence: {entry[1].sentence}
             </div>
-            <div className="current-author">Author: {entry[1].author}</div>
+            <div className="current-author">
+              Author:
+              {entry[1].author}
+            </div>
+            <div className="current-country">Country: {entry[1].country}</div>
           </div>
         );
       });
