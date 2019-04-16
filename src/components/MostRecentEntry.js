@@ -5,10 +5,23 @@ import * as actions from '../redux/actions';
 class TestComp extends Component {
   renderMostRecentEntry() {
     const { fbEntries } = this.props;
-    const firebaseEntriesObjToArray = Object.entries(fbEntries);
-    const firebaseEntries = firebaseEntriesObjToArray.map(entry => {
-      return <div key={entry[0]}>{entry[1].title}</div>;
-    });
+    const firebaseEntriesObjToArray = Object.entries(fbEntries || []);
+    const firebaseEntries = firebaseEntriesObjToArray
+      .filter(
+        entry =>
+          firebaseEntriesObjToArray.indexOf(entry) ===
+          firebaseEntriesObjToArray.length - 1
+      )
+      .map(entry => {
+        return (
+          <div key={entry[0]}>
+            <div className="current-sentence">
+              Sentence: {entry[1].sentence}
+            </div>
+            <div className="current-author">Author: {entry[1].author}</div>
+          </div>
+        );
+      });
 
     return firebaseEntries;
   }

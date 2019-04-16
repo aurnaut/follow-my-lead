@@ -11,4 +11,4 @@ const config = {
 
 firebase.initializeApp(config);
 const databaseRef = firebase.database().ref();
-export const entriesRef = databaseRef.child('entries').limitToLast(1);
+export const entriesRef = databaseRef.child('entries');
