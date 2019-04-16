@@ -3,15 +3,10 @@ import { connect } from 'react-redux';
 import * as actions from '../redux/actions';
 
 class TestComp extends Component {
-  renderToDo() {
-    const { data } = this.props;
-    const firebaseEntriesObjToArray = Object.entries(data);
-    const firebaseMostRecentEntry = firebaseEntriesObjToArray.filter(
-      entry =>
-        firebaseEntriesObjToArray.indexOf(entry) ===
-        firebaseEntriesObjToArray.length - 1
-    );
-    const firebaseEntries = firebaseMostRecentEntry.map(entry => {
+  renderMostRecentEntry() {
+    const { fbEntries } = this.props;
+    const firebaseEntriesObjToArray = Object.entries(fbEntries);
+    const firebaseEntries = firebaseEntriesObjToArray.map(entry => {
       return <div key={entry[0]}>{entry[1].title}</div>;
     });
 
@@ -21,17 +16,13 @@ class TestComp extends Component {
     this.props.fetchEntries();
   }
   render() {
-    return (
-      <div>
-        <div>{this.renderToDo()}</div>
-      </div>
-    );
+    return <div>{this.renderMostRecentEntry()}</div>;
   }
 }
 
-const mapStateToProps = ({ data }) => {
+const mapStateToProps = ({ fbEntries }) => {
   return {
-    data
+    fbEntries
   };
 };
 
